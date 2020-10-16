@@ -26,4 +26,5 @@ public:
 	bool closed();
 
 	GLFWwindow* context() const { return window; }
+	void displayFPS(unsigned int fps);
 };

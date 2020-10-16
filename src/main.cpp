@@ -3,7 +3,7 @@
 
 int main()
 {
-    Application app(1280, 720, "Simulator");
+    Application app(1920, 1080, "Simulator");
     MainScene mainScene;
     app.setScene(&mainScene);
     app.run();

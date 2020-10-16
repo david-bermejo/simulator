@@ -15,6 +15,8 @@ void Application::setScene(IScene* scene)
 void Application::run()
 {
 	Timer timer;
+	Timer timer_fps;
+	unsigned int fps = 0;
 
 	while (!window.closed())
 	{
@@ -27,6 +29,13 @@ void Application::run()
 		renderer.begin();
 		scene->render();
 		renderer.end();
+
+		fps++;
+		if (timer_fps.elapsed() > 1.0) {
+			timer_fps.reset();
+			window.displayFPS(fps);
+			fps = 0;
+		}
 
 		window.update();
 	}

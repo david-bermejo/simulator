@@ -54,7 +54,7 @@ void Window::init()
 	ImGuiIO& io = ImGui::GetIO();
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init();
-	ImGui::StyleColorsLight();
+	ImGui::StyleColorsDark();
 }
 
 void Window::pollEvents()
@@ -70,4 +70,10 @@ void Window::update()
 bool Window::closed()
 {
 	return glfwWindowShouldClose(window) == 1;
+}
+
+void Window::displayFPS(unsigned int fps)
+{
+	std::string tmp = title + std::string("   |   ") + std::to_string(fps) + std::string(" fps\n");
+	glfwSetWindowTitle(window, tmp.c_str());
 }

@@ -1,6 +1,10 @@
 [submodule "deps/imgui"]
 	path = deps/imgui
 	url = https://github.com/ocornut/imgui.git
+	branch = docking
 [submodule "deps/imgui-plot"]
 	path = deps/imgui-plot
 	url = https://github.com/soulthreads/imgui-plot.git
+[submodule "deps/gopt"]
+	path = deps/gopt
+	url = https://github.com/bermejus/gopt.git

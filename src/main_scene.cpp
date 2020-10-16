@@ -20,13 +20,26 @@ void MainScene::resize(unsigned int width, unsigned int height)
 
 void MainScene::update(double dt)
 {
-    std::cout << "Elapsed: " << dt << " s\n";
+    
 }
 
 void MainScene::render()
 {
     ImGui::Begin("Demo window");
-    ImGui::Button("Hello!");
+    if (ImGui::BeginTabBar("blah"))
+    {
+        if (ImGui::BeginTabItem("Video"))
+        {
+            ImGui::Button("Save");
+            ImGui::EndTabItem();
+        }
+        if (ImGui::BeginTabItem("Music"))
+        {
+            ImGui::Button("Upload");
+            ImGui::EndTabItem();
+        }
+        ImGui::EndTabBar();
+    }
     ImGui::End();
 
     ImGui::Begin("Demo window 2");
