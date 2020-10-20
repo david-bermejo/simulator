@@ -1,6 +1,10 @@
 #include "application.h"
 #include "../utils/timer.h"
 
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+
 Application::Application(unsigned int width, unsigned int height, const std::string& title)
 	: window(width, height, title), scene(nullptr) {}
 
@@ -21,14 +25,22 @@ void Application::run()
 	while (!window.closed())
 	{
 		window.pollEvents();
+		scene->input();
 
 		const double dt = timer.elapsed();
 		timer.reset();
 		scene->update(dt);
 
-		renderer.begin();
+		// Begin rendering ImGui
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
+
 		scene->render();
-		renderer.end();
+
+		// Finish rendering ImGui
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		fps++;
 		if (timer_fps.elapsed() > 1.0) {

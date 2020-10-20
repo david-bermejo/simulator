@@ -78,12 +78,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(ProjectDir)deps\gopt\math\;$(ProjectDir)deps\imgui-plot\include\;$(ProjectDir)deps\imgui\;$(ProjectDir)deps\imgui\backends\;$(ProjectDir)deps\glew\include\;$(ProjectDir)deps\glfw3\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)deps\stl_reader\;$(ProjectDir)deps\gopt\math\;$(ProjectDir)deps\imgui-plot\include\;$(ProjectDir)deps\imgui\;$(ProjectDir)deps\imgui\backends\;$(ProjectDir)deps\glew\include\;$(ProjectDir)deps\glfw3\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)deps\glew\lib\;$(ProjectDir)deps\glfw3\lib\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(ProjectDir)deps\gopt\math\;$(ProjectDir)deps\imgui-plot\include\;$(ProjectDir)deps\imgui\;$(ProjectDir)deps\imgui\backends\;$(ProjectDir)deps\glew\include\;$(ProjectDir)deps\glfw3\include\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)deps\stl_reader\;$(ProjectDir)deps\gopt\math\;$(ProjectDir)deps\imgui-plot\include\;$(ProjectDir)deps\imgui\;$(ProjectDir)deps\imgui\backends\;$(ProjectDir)deps\glew\include\;$(ProjectDir)deps\glfw3\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)deps\glew\lib\;$(ProjectDir)deps\glfw3\lib\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -118,8 +118,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>STL_READER_NO_EXCEPTIONS;GLEW_STATIC;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,8 +134,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>STL_READER_NO_EXCEPTIONS;GLEW_STATIC;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,22 +155,31 @@
     <ClCompile Include="deps\imgui\imgui_draw.cpp" />
     <ClCompile Include="deps\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\app\application.cpp" />
+    <ClCompile Include="src\graphics\model.cpp" />
     <ClCompile Include="src\graphics\renderer.cpp" />
+    <ClCompile Include="src\graphics\shader.cpp" />
     <ClCompile Include="src\graphics\window.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\main_scene.cpp" />
+    <ClCompile Include="src\utils\file_utils.cpp" />
     <ClCompile Include="src\utils\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="assets\shaders\default.frag" />
+    <None Include="assets\shaders\default.vert" />
     <None Include="deps\imgui\.editorconfig" />
     <None Include="deps\imgui\.git" />
     <None Include="deps\imgui\.gitattributes" />
     <None Include="deps\imgui\.gitignore" />
+    <None Include="deps\stl_reader\.git" />
+    <None Include="deps\stl_reader\LICENSE" />
+    <None Include="deps\stl_reader\Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="deps\gopt\math\algorithms.hpp" />
     <ClInclude Include="deps\gopt\math\constants.hpp" />
+    <ClInclude Include="deps\gopt\math\gopt.hpp" />
     <ClInclude Include="deps\gopt\math\matrix.hpp" />
     <ClInclude Include="deps\gopt\math\solvers.hpp" />
     <ClInclude Include="deps\gopt\math\vector.hpp" />
@@ -182,11 +193,16 @@
     <ClInclude Include="deps\imgui\imstb_rectpack.h" />
     <ClInclude Include="deps\imgui\imstb_textedit.h" />
     <ClInclude Include="deps\imgui\imstb_truetype.h" />
+    <ClInclude Include="deps\stl_reader\stl_reader.h" />
     <ClInclude Include="src\app\application.h" />
+    <ClInclude Include="src\graphics\imgui_window.h" />
     <ClInclude Include="src\graphics\iscene.h" />
+    <ClInclude Include="src\graphics\model.h" />
     <ClInclude Include="src\graphics\renderer.h" />
+    <ClInclude Include="src\graphics\shader.h" />
     <ClInclude Include="src\graphics\window.h" />
     <ClInclude Include="src\main_scene.h" />
+    <ClInclude Include="src\utils\file_utils.h" />
     <ClInclude Include="src\utils\timer.h" />
   </ItemGroup>
   <ItemGroup>

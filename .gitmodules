@@ -8,3 +8,6 @@
 [submodule "deps/gopt"]
 	path = deps/gopt
 	url = https://github.com/bermejus/gopt.git
+[submodule "deps/stl_reader"]
+	path = deps/stl_reader
+	url = https://github.com/sreiter/stl_reader.git
