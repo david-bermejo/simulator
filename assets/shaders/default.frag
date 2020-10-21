@@ -3,7 +3,7 @@
 in vec3 frag_normal;
 in vec3 frag_position;
 
-out vec4 frag_color;
+layout(location = 0) out vec4 color;
 
 uniform float ambient_strength = 0.1;
 
@@ -29,5 +29,5 @@ void main()
 
 	vec3 result = (ambient + diffuse) * object_color;
 
-	frag_color = vec4(result, 1.0);
+	color = vec4(result, 1.0);
 }

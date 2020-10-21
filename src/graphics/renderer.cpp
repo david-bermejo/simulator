@@ -44,8 +44,8 @@ void Renderer::render(Model* model)
 
 void Renderer::end()
 {
-	glfwGetFramebufferSize(glfwGetCurrentContext(), (int*)&v_width, (int*)&v_height);
-	glViewport(0, 0, v_width, v_height);
+	//glfwGetFramebufferSize(glfwGetCurrentContext(), (int*)&v_width, (int*)&v_height);
+	//glViewport(0, 0, v_width, v_height);
 	
 	shader->end();
 }

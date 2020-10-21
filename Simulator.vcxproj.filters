@@ -63,6 +63,9 @@
     <ClCompile Include="src\graphics\model.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\framebuffer.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="deps\imgui\.git" />
@@ -75,6 +78,8 @@
     <None Include="deps\stl_reader\Readme.md" />
     <None Include="assets\shaders\default.vert" />
     <None Include="assets\shaders\default.frag" />
+    <None Include="assets\shaders\texture.vert" />
+    <None Include="assets\shaders\texture.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\window.h">
@@ -156,6 +161,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="deps\gopt\math\gopt.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\framebuffer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

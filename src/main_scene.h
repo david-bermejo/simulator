@@ -5,6 +5,7 @@
 #include "graphics/shader.h"
 #include "graphics/renderer.h"
 #include "graphics/model.h"
+#include "graphics/framebuffer.h"
 
 class MainScene : public IScene
 {
@@ -13,6 +14,7 @@ private:
 	Shader* shader;
 	Renderer* renderer;
 	Model* model, *model2;
+	Framebuffer* fb;
 
 public:
 	MainScene() : IScene() {}
