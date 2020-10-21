@@ -64,6 +64,9 @@ public:
 	gopt::Vec3 position;
 	gopt::Vec3 rotation;
 
+	gopt::Mat4f rotation_matrix;
+	gopt::Vec3f color;
+
 	GLuint vao;
 	std::vector<GLuint> vbos;
 	unsigned int elements;

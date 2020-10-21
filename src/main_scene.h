@@ -12,7 +12,7 @@ private:
 	ImGuiWindowFlags layout_flags;
 	Shader* shader;
 	Renderer* renderer;
-	Model* model;
+	Model* model, *model2;
 
 public:
 	MainScene() : IScene() {}

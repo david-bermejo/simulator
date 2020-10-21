@@ -5,6 +5,7 @@
 #include <iostream>
 
 Model::Model(const std::string& path)
+	: rotation_matrix(gopt::eye<float, 4>()), color(1.0f, 1.0f, 1.0f)
 {
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
@@ -15,15 +16,6 @@ Model::Model(const std::string& path)
 	std::vector<unsigned int> solids;
 
 	stl_reader::ReadStlFile(path.c_str(), file_coords, file_normals, tris, solids);
-
-	/*unsigned int m = 0;
-	for (int i = 0; i < tris.size(); i++)
-		if (tris[i] > m)
-			m = tris[i];
-	std::cout << "Max: " << m << std::endl;
-	std::cout << file_coords.size() << std::endl;
-	std::cout << file_normals.size() << std::endl;
-	std::cout << tris.size() << std::endl;*/
 
 	std::vector<Coords> coords;
 	coords.resize(file_coords.size() / 3);
@@ -38,9 +30,9 @@ Model::Model(const std::string& path)
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 
+	std::unordered_map<Vertex, unsigned int> map(0);
 	for (int i = 0; i < tris.size(); i++)
 	{
-		static std::unordered_map<Vertex, unsigned int> map(0);
 		Vertex vertex { coords[tris[i]], normals[i/3] };
 
 		if (auto it = map.find(vertex); it != map.end()) {
@@ -79,7 +71,7 @@ gopt::Mat4f Model::transform()
 	const auto r = gopt::rotation<float>((float)rotation[2], (float)rotation[0], (float)rotation[1]);
 	const auto s = gopt::scaling(gopt::Vec3f(0.01f));
 
-	return t * r * s;
+	return t * r * rotation_matrix * s;
 }
 
 void Model::load(const std::vector<unsigned int>& data)

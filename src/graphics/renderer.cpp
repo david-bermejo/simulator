@@ -10,10 +10,10 @@ Renderer::Renderer(Shader* shader)
 	: v_width(0), v_height(0), shader(shader)
 {
 	glEnable(GL_DEPTH_TEST);
-	//glDepthFunc(GL_LEQUAL);
-	//glEnable(GL_CULL_FACE);
-	//glCullFace(GL_BACK);
-	//glFrontFace(GL_CW);
+	glDepthFunc(GL_LEQUAL);
+
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 }
 
 Renderer::~Renderer() {}
@@ -28,6 +28,9 @@ void Renderer::begin()
 
 void Renderer::render(Model* model)
 {
+	shader->set("transform", model->transform());
+	shader->set("object_color", model->color);
+
 	glBindVertexArray(model->vao);
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);

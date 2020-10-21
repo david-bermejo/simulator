@@ -20,9 +20,16 @@ void MainScene::init()
 
     shader = new Shader();
     renderer = new Renderer(shader);
+
     model = new Model("assets/Rocket_Pen.stl");
-    model->position = {-1.0, 0.0, -0.5};
-    model->rotation[1] = -gopt::pi<> / 2;
+    model->position = {-2.0, 0.0, -1.0};
+    model->rotation_matrix = gopt::rotation(-gopt::pi<float> / 2, gopt::Vec3f{ 1, 0, 0 });
+    model->color = gopt::Vec3f{ 0.0f, 1.0f, 0.0f };
+
+    model2 = new Model("assets/sphere.stl");
+    model2->position = {-3.0, 0.0, -1.0};
+    model2->rotation_matrix = gopt::rotation(-gopt::pi<float> / 2, gopt::Vec3f{ 1, 0, 0 });
+    model2->color = gopt::Vec3f{ 0.0f, 0.0f, 1.0f };
 
     unsigned int width, height;
     glfwGetWindowSize(glfwGetCurrentContext(), (int*)&width, (int*)&height);
@@ -46,18 +53,18 @@ void MainScene::input()
 
 void MainScene::update(double dt)
 {
-    //model->position[0] += 0.5 * dt;
     model->rotation[0] += dt;
 
-    shader->begin();
-    shader->set("transform", model->transform());
-    shader->end();
+    //shader->begin();
+    
+    //shader->end();
 }
 
 void MainScene::render()
 {
     renderer->begin();
     renderer->render(model);
+    renderer->render(model2);
     renderer->end();
     /*int width, height;
     glfwGetWindowSize(glfwGetCurrentContext(), &width, &height);
